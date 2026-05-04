@@ -1,10 +1,10 @@
 import sqlite3
 
-# Connect to database
+
 conn = sqlite3.connect("students.db")
 cursor = conn.cursor()
 
-# Create table
+
 cursor.execute("""
 CREATE TABLE IF NOT EXISTS students (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -15,7 +15,6 @@ CREATE TABLE IF NOT EXISTS students (
 """)
 conn.commit()
 
-# Add student
 def add_student():
     name = input("Enter name: ")
     age = int(input("Enter age: "))
@@ -28,7 +27,7 @@ def add_student():
     conn.commit()
     print("✅ Student added successfully!")
 
-# View students
+
 def view_students():
     cursor.execute("SELECT * FROM students")
     rows = cursor.fetchall()
@@ -61,7 +60,7 @@ def update_student():
     conn.commit()
     print("✅ Student updated successfully!")
 
-# Delete student
+
 def delete_student():
     id = int(input("Enter student ID to delete: "))
 
@@ -74,7 +73,7 @@ def delete_student():
     conn.commit()
     print("✅ Student deleted successfully!")
 
-# Search student
+
 def search_student():
     name = input("Enter name to search: ")
 
@@ -87,7 +86,6 @@ def search_student():
         for row in rows:
             print(row)
 
-# Main menu
 while True:
     print("\n===== Student Management System =====")
     print("1. Add Student")
